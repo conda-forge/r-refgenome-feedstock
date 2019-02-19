@@ -1,4 +1,4 @@
-{% set version = '1.7.3' %}
+{% set version = "1.7.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/refGenome_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/refGenome/refGenome_{{ version }}.tar.gz
-  sha256: 5617e2d3f35a5440e3448c447295124c1796ce0b5fc3d563f190df7085cae096
+  sha256: 071d087da87e5dfe00ec2abfbfb93364508fd07e94c5a48003cd4c7ccbee94e8
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
