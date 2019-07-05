@@ -1,4 +1,4 @@
-{% set version = "1.7.3.1" %}
+{% set version = '1.7.7' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/refGenome_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/refGenome/refGenome_{{ version }}.tar.gz
-  sha256: 071d087da87e5dfe00ec2abfbfb93364508fd07e94c5a48003cd4c7ccbee94e8
+  sha256: e515030cc68f6d2e7570e9a69509a517ab69960a110762ea7e3f5435ec4a48fd
 
 build:
   merge_build_host: True  # [win]
@@ -21,9 +21,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
     - {{posix}}sed               # [win]
@@ -49,35 +50,31 @@ test:
 about:
   home: https://CRAN.R-project.org/package=refGenome
   license: GPL-2
-  summary: Contains functionality for import and managing of downloaded genome annotation Data
-    from Ensembl genome browser (European Bioinformatics Institute) and from UCSC genome
-    browser (University of California, Santa Cruz) and annotation routines for genomic
-    positions and splice site positions.
+  summary: Contains functionalities for importing and managing downloaded genome annotation data
+    from 'Ensembl' genome browser (European Bioinformatics Institute, <https://www.ensembl.org>)
+    and from 'UCSC' genome browser (University of California, Santa Cruz, <https://genome.ucsc.edu/>)
+    and annotation routines for genomic positions and splice site positions.
   license_family: GPL2
   license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
 
 # Package: refGenome
 # Type: Package
-# Title: Gene and Splice Site Annotation Using Annotation Data from Ensembl and UCSC Genome Browsers
-# Version: 1.7.3
-# Date: 2017-03-20
-# Author: Wolfgang Kaisers
-# Maintainer: Wolfgang Kaisers <kaisers@med.uni-duesseldorf.de>
-# Description: Contains functionality for import and managing of downloaded genome annotation Data from Ensembl genome browser (European Bioinformatics Institute) and from UCSC genome browser (University of California, Santa Cruz) and annotation routines for genomic positions and splice site positions.
+# Title: Gene and Splice Site Annotation Using Annotation Data from 'Ensembl' and 'UCSC' Genome Browsers
+# Version: 1.7.7
+# Date: 2019-04-24
+# Authors@R: c(person("Wolfgang", "Kaisers", role=c("aut", "cre"), email="wolfgang.kaisers@gmail.com"))
+# Description: Contains functionalities for importing and managing downloaded genome annotation data from 'Ensembl' genome browser (European Bioinformatics Institute, <https://www.ensembl.org>) and from 'UCSC' genome browser (University of California, Santa Cruz, <https://genome.ucsc.edu/>) and annotation routines for genomic positions and splice site positions.
 # License: GPL-2
 # Depends: methods,doBy,RSQLite
 # Imports: DBI
 # Collate: refGenome.R geneModel.R
-# Packaged: 2017-03-20 08:43:27 UTC; kaisers
+# Packaged: 2019-04-25 19:04:52 UTC; wolfgang
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2017-03-20 09:03:07 UTC
+# Date/Publication: 2019-05-22 18:52:04
+# Author: Wolfgang Kaisers [aut, cre]
+# Maintainer: Wolfgang Kaisers <wolfgang.kaisers@gmail.com>
